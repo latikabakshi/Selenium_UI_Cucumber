@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset='utf-8'>
+      <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+      <title>QA AUTOMATION SERVICES MANAGEMENT</title>
+      <meta name='viewport' content='width=device-width, initial-scale=1'>
+      <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+         crossorigin="anonymous"></script>
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+      <!-- jQuery library -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <!-- Latest compiled JavaScript -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+      <script type="text/javascript">
+         var _actionForShowBusy = true;
+         var _continueLoading = false;
+         
+         
+         function ContinueLoading() {
+                _continueLoading = true;
+            }
+         
+            function HideBusy() {
+                if (_continueLoading == undefined || _continueLoading) {
+                    _continueLoading = false;
+                    return;
+                }
+                $("#divBackground").hide();
+                $("#divImage").hide();
+            }
+         
+            function ShowBusy() {
+                if (_actionForShowBusy) {
+                    $("#divBackground").show();
+                    $("#divImage").show();
+                }
+                _actionForShowBusy = true;
+            }
+         
+         
+         
+         $(document).ajaxStart(function () {
+                // debugger
+                ShowBusy();           
+            });
+         
+            $(document).ajaxStop(function () {
+                //  debugger
+                HideBusy();
+              
+            });
+
+            $(document ).ready(function () {
+                //debugger
+                $("#phase1").show();
+                $("#phase2").hide();
+                $("#sample").hide();         
+            });
+      
+      </script>
+      <script type="text/javascript">
+         function clickFunction(data1) {
+            
+             $('.'+data1).attr("disabled", true).css({"background-color": "red", "cursor": "no-drop"});
+             var url = 'http://localhost:8080/' + data1;
+             var spanId = "spanPass" + data1;
+            
+                 $.ajax({                  
+                     url: url,
+                     method: 'post',
+                       //data : "processDateInput="+processDate,
+                       dataType : "json",
+                     success: function (response) {
+                      $('.' + data1).attr("disabled", false).css({ "background-color": "", "cursor": "" });
+                     var od = JSON.stringify(response) ;
+                       console.log(od);
+                     
+                   if(od == "True" || od == "true")
+                      $("#" + spanId).html("Pass").css({"background-color": "green", "font-size": "150%"});
+                      
+                    else
+                       $("#" + spanId).html("Failed").css({"background-color": "red", "font-size": "150%"});
+                      
+                     },
+                     
+                     error: function (response) {
+                         $('.' + data1).attr("disabled", false).css({ "background-color": "", "cursor": "" });
+                     }, 
+                 });
+             };
+        
+         
+         function reportFunction(method,webappname) {
+               var url = 'http://localhost:8080/'+ webappname + '/' + method; 
+         
+                 $.ajax({                  
+                     url: url,
+                     method: 'get',
+                     data: '',
+                     success: function (response) {
+                 
+                          window.open('http://localhost:8080/'+ webappname +'/'+'Report'+'/' + response , '_blank')
+                    //  $('.' + data1).attr("disabled", false).css({ "background-color": "", "cursor": "" });
+                     },
+                     error: function (response) {
+                         $('.' + data1).attr("disabled", false).css({ "background-color": "", "cursor": "" });
+                     }, 
+                 });
+             };
+       function reportLog(method,webappname) {
+            
+           // debugger;
+             
+             var url = 'http://localhost:8080/'+ webappname + '/' + method;  
+         
+                window.open(url , '_blank')
+             };
+             
+                           
+             function showhide(par)
+             {
+
+                 if(par==1)
+                  {
+                    $("#phase1").show();
+                    $("#sample").hide();
+                    $("#phase2").hide();  
+                  }
+                else if(par==2)
+                  { $("#phase2").show();
+                    $("#phase1").hide();
+                    $("#sample").hide();  
+                  }
+                else if(par==3)
+                  {
+                    $("#phase1").hide();
+                    $("#phase2").hide();
+                $("#sample").show();  
+                  }
+
+             }
+         
+      </script>
+      <style>
+         /* p,td,th{
+         font-size: 20px;
+         }
+         body{
+         background-color: white;
+         } */
+         /* @import "compass/css3"; */
+         table {
+         font-family: 'Arial';
+         /* margin: 25px auto; */
+         border-collapse: collapse;
+         border: 1px solid #eee;
+         border-bottom: 2px solid #00cccc;
+         box-shadow: 0px 0px 20px rgba(0,0,0,0.10),
+         0px 10px 20px rgba(0,0,0,0.05),
+         0px 20px 20px rgba(0,0,0,0.05),
+         0px 30px 20px rgba(0,0,0,0.05);
+         /* tr {
+         &:hover {
+         background: #f4f4f4;
+         td {
+         color: #555;
+         }
+         } */
+         }
+         th, td {
+         color: #999;
+         border: 1px solid #eee;
+         padding: 8px 25px;
+         border-collapse: collapse;
+         }
+         th {
+         background: #00cccc;
+         color: #fff;
+         text-transform: uppercase;
+         font-size: 12px;
+         padding: 12px 35px;
+         }
+         }
+         .wrapper{position:relative;}
+         .right,.left{width:50%; position:absolute;}
+         .right{right:0; padding: 10px;}
+         .left{left:0; padding: 15px;}
+         .btn-cls{width: 180px;}
+         .btn-sample { 
+  color: #FFFFFF; 
+ 
+  background-color: #716E75; 
+  border-color: #74737A; 
+  
+} 
+
+      </style>
+   </head>
+   <body>
+      <div class="wrapper" style="background-color:#333c4b; width: 15%; top: 0px; left: 0px; >
+         <div class="left">
+            <img src="logo.png" alt="">
+         </div>
+      <table width="100%" >
+         <tr>
+            <td>
+            </td>
+            <td style="text-align: center ">
+               <h2>QA AUTOMATION SERVICES MANAGEMENT</h2>
+            </td>
+         </tr>
+      </table>
+      
+         <table width="100%" style="border: 0px solid rgb(173, 157, 157)">
+            <tr>
+               <p style="text-align: center;color: orange;font-size: large" id="pid"></p>
+              
+               <!-- <td style="text-align: center;color:blue">www.AutomationServicesDashboard.com</td> -->
+            </tr>
+         </table>
+         <div>
+               <table width="100%"  style="border: 1px  solid rgb(173, 157, 157)">
+               <thead>
+                  <tr>
+                 	 <th  style="text-align:center;">Testing Phases</th>
+   					 <th style="text-align:center;">View Name</th> 
+ 					 <th style="text-align:center;">Test Result</th>
+ 					 <th style="text-align:center;">Execution Time</th>
+ 					 <th style="text-align:center;">Passed / Failed Status</th>
+ 					 <th style="text-align:center;">Send Email</th>
+ 					 <th style="text-align:center;">Report Logs</th>
+                  </tr>
+               </thead>
+               <tbody>
+               <tr>
+			    <td><b>Overview Page</b></td>
+ 				   <td>
+ 				   		<button class="overview-page btn-cls btn-sample " onclick="clickFunction('soi')">Overview Button</button>
+ 				   </td>
+				    <td>
+				   		 <button class="overview-reports btn-cls btn-sample " onclick="clickFunction('incedo-2','overviewReports')">Overview Reports</button>
+				    </td>
+				    <td></td
+				    <td></td
+				    <td>
+				    	<button class="overview-reports btn-cls btn-sample " onclick="clickFunction('incedo-2','sendEmail')">Send Email</button>
+				    </td
+ 				   <td>
+ 				   	<button class="reportlog btn-sample" onclick="reportLog('reportlog','pwautomation-1')">Report Log</button>
+ 				   	</td
+                  </tr>
+
+             </tbody>
+            </table> 
+           </div>
+      </div>
+      <div id="divBackground" style="background-color: rgba(0, 0, 0, 0.6); width: 100%; top: 0px; left: 0px; position: fixed; height: 100%;
+         display: none;z-index: 99998;">
+         <div id="divImage" style="margin: auto;font-size: small; vertical-align: middle; top: 45%; position: fixed; right: 45%; text-align: center; height: 100px;">
+            <img src="progress.gif" width="100" alt="Loading" style="position: absolute;top: 3px;right: 4px;display:inline;"/>
+         </div>
+      </div>
+   </body>
+</html>

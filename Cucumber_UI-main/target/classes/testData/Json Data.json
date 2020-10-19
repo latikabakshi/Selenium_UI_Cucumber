@@ -1,0 +1,100 @@
+{
+    "Main_data": [
+        {
+            "kpi": "Total Loan Sales",
+            "node_id": "A",
+            "insight": [
+                {
+                    "insight": " Auto Loans increased",
+                    "date": "2019-12-30",
+                    "node_id": "A"
+                 },   
+                
+              {
+                    "insight": "Total loan ",
+                    "date": "2019-12-31",
+                    "status": "positive",
+                    "node_id": "A"
+                }
+            ],
+                
+                "trend": {
+                "weekly": [
+                    {
+                        "date": "2019-12-31",
+                        "kpi_value": 8049.0
+                    },
+                    {
+                        "date": "2019-12-25",
+                        "kpi_value": 7713.0
+                    }
+                ],
+                "monthly": [
+                    {
+                        "date": "2019-12-31",
+                        "kpi_value": 804.0
+                    },
+                      {
+                        "date": "2019-12-02",
+                        "kpi_value": 659361184.0
+                    }
+                ],
+                "yearly": [
+                    {
+                        "date": "2019-12-31",
+                        "kpi_value": 804.0
+                    },
+                    {
+                        "date": "2019-12-30",
+                        "kpi_value": 789.0
+                    }
+                   
+                    
+                ]
+            }
+        },
+        {
+            "kpi": "Personal Loans",
+            "node_id": "B1",
+            "insight": [
+                {
+                    "insight": " Car Loans Increased",
+                    "date": "2019-03-03",
+                    "node_id": "B1"
+                    
+                },
+                {
+                    "insight": " Two wheeler loans decreased",
+                    "date": "2019-03-03",
+                     "node_id": "B1"
+                }   
+               
+                
+      
+            ],
+            "trend": {
+                "weekly":[
+                    {
+                        "date": "2019-12-31",
+                        "kpi_value": 298.0
+                    },
+                    {
+                        "date": "2019-12-30",
+                        "kpi_value": 291.0
+                    }
+                    
+                ],
+                "yearly": [
+                    {
+                        "date": "2019-12-31",
+                        "kpi_value": 298.0
+                    },
+                 {
+                        "date": "2019-01-01",
+                        "kpi_value": 130304368.0
+                    }
+                ]
+            }
+        }
+    ]
+    }
